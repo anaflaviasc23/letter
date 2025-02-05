@@ -95,6 +95,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .player {
@@ -133,18 +134,13 @@
         /* Responsividade */
         @media (max-width: 768px) {
             .envelope {
-                width: 100%;
+                width: 90%;
                 height: 400px;
             }
 
             .carta {
                 width: 90%;
                 margin-left: 5%;
-            }
-
-            .img {
-                width: 100%;
-                height: auto;
             }
 
             .remetente {
@@ -191,6 +187,11 @@
                 padding: 8px 12px;
                 font-size: 14px;
             }
+
+            p {
+                font-size: 14px;
+            }
+
         }
 
     </style>
