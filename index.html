@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(236, 236, 236, 0.856);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .envelope {
+            width: 100%;
+            height: 500px;
+            background: #ffcc80;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .corpo {
+            width: 100%;
+            height: 100px;
+        }
+
+        .remetente {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 150px;
+            margin-left: 100px;
+        }
+
+        p {
+            font-family: "Yellowtail", serif;
+            font-weight: 800pt;
+            font-size: 20pt;
+            font-style: normal;
+            color: black;
+            margin: 0;
+        }
+
+        .carta {
+            position: absolute;
+            margin-left: 150px;
+            width: 500px;
+            height: 300px;
+            background: #ffdfc6;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 18px;
+            bottom: 900px;
+            transition: bottom 1s ease-in-out, opacity 1s ease-in-out;
+            opacity: 0;
+        }
+
+        /* Estilo do selo com imagem no canto direito */
+        .selo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 150px;
+            height: 150px;
+            background-image: url('selo.png'); /* Substitua com o caminho da sua imagem */
+            background-size: cover; /* Faz com que a imagem cubra o espaço do selo */
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        .botoes {
+            margin-top: 20px;
+            width: 100%;
+            height: 80px;
+            position: relative;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #ff7043;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #f4511e;
+        }
+
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            .remetente p {
+                font-size: 16pt;
+                text-align: center;
+                margin: 0;
+            }
+
+            .carta {
+                width: 90%;
+                margin-left: 5%;
+                height: 250px;
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .envelope {
+                height: 400px;
+            }
+
+            .selo {
+                width: 100px;
+                height: 100px;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .botoes {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .remetente p {
+                font-size: 14pt;
+            }
+
+            .carta {
+                width: 85%;
+                margin-left: 7%;
+                height: 220px;
+                font-size: 14px;
+            }
+
+            .envelope {
+                height: 350px;
+            }
+
+            .selo {
+                width: 80px;
+                height: 80px;
+            }
+
+            button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .botoes {
+                margin-top: 15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="envelope" id="envelope">
+            <div class="selo"></div> <!-- Selo como imagem no canto superior direito -->
+            <div class="remetente">
+                <p style="color: #b38034;">Ana Clara Ribeiro<br>
+                    Admiradora secreta<br>
+                    Rua Perdidamente apaixonada,SP - 2025</p>
+            </div>
+            <div class="corpo"></div>
+        </div>
+        <div class="carta" id="carta">
+            <p style="margin-bottom: 50px;">Sabia que te amo? ❤🥰 </p>
+            <div class="botoes">
+                <button id="nao">Não</button>
+                <button id="sim">Sim</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("container").addEventListener("click", function () {
+            let carta = document.getElementById("carta");
+
+            // Fazendo a carta aparecer e subir
+            setTimeout(() => {
+                carta.style.bottom = "10px";
+                carta.style.opacity = "1";
+            }, 300);
+        });
+
+        let naoBtn = document.getElementById("nao");
+        let botoesContainer = document.querySelector(".botoes");
+
+        naoBtn.addEventListener("click", function () {
+    let qtdBotoes = Math.floor(Math.random() * 3) + 1; // De 1 a 3 botões
+    for (let i = 0; i < qtdBotoes; i++) {
+        let novoSim = document.createElement("button");
+        novoSim.innerText = "Sim!";
+        novoSim.classList.add("sim-extra");
+
+        // Define posições aleatórias
+        let topPosition = Math.floor(Math.random() * 55); // 200px de altura máxima
+        let leftPosition = Math.floor(Math.random() * 350); // 10px de largura máxima
+
+        novoSim.style.position = "absolute";
+        novoSim.style.top = `${topPosition}px`;
+        novoSim.style.left = `${leftPosition}px`;
+
+        // Diminuindo o tamanho do botão diretamente via JavaScript
+        novoSim.style.width = "80px";  // Largura do botão
+        novoSim.style.height = "30px"; // Altura do botão
+        novoSim.style.fontSize = "14px"; // Tamanho da fonte
+        novoSim.style.padding = "5px"; // Espaçamento interno
+        novoSim.style.borderRadius = "5px"; // Bordas arredondadas
+
+        novoSim.addEventListener("click", function () {
+            window.location.href = "sim.html";
+        });
+
+        botoesContainer.appendChild(novoSim);
+    }
+});
+
+
+        document.getElementById("sim").addEventListener("click", function () {
+            window.location.href = "sim.html";
+        });
+    </script>
+
+</body>
+
+</html>
