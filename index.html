@@ -33,7 +33,7 @@
 
         .envelope {
             width: 100%;
-            height: 500px;
+            height: 300px;
             background: #ffcc80;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -52,14 +52,14 @@
         .remetente {
             width: 100%;
             height: 100px;
-            margin-bottom: 150px;
-            margin-left: 100px;
+            margin-bottom: 70px;
+            margin-left: 75px;
         }
 
         p {
             font-family: "Yellowtail", serif;
             font-weight: 800pt;
-            font-size: 20pt;
+            font-size: 15pt;
             font-style: normal;
             color: black;
             margin: 0;
@@ -68,15 +68,15 @@
         .carta {
             position: absolute;
             margin-left: 150px;
-            width: 500px;
-            height: 300px;
+            width: 350px;
+            height: 95px;
             background: #ffdfc6;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             font-size: 18px;
-            bottom: 900px;
+            bottom: 850px;
             transition: bottom 1s ease-in-out, opacity 1s ease-in-out;
             opacity: 0;
         }
@@ -88,17 +88,23 @@
             right: 10px;
             width: 150px;
             height: 150px;
-            background-image: url('selo.png'); /* Substitua com o caminho da sua imagem */
-            background-size: cover; /* Faz com que a imagem cubra o espaço do selo */
+            background-image: url('selo.png');
+            /* Substitua com o caminho da sua imagem */
+            background-size: cover;
+            /* Faz com que a imagem cubra o espaço do selo */
             background-position: center;
             border-radius: 50%;
         }
 
         .botoes {
             margin-top: 20px;
-            width: 100%;
+            width: 50%;
             height: 80px;
             position: relative;
+            display: flex;
+            /* Adiciona flexbox para disposição horizontal */
+            justify-content: space-around;
+            /* Espalha os botões uniformemente */
         }
 
         button {
@@ -119,13 +125,13 @@
         /* Estilos Responsivos */
         @media (max-width: 768px) {
             .remetente p {
-                font-size: 16pt;
+                font-size: 14pt;
                 text-align: center;
                 margin: 0;
             }
 
             .carta {
-                width: 90%;
+                width: 80%;
                 margin-left: 5%;
                 height: 250px;
                 padding: 15px;
@@ -133,7 +139,7 @@
             }
 
             .envelope {
-                height: 400px;
+                height: 300px;
             }
 
             .selo {
@@ -148,7 +154,7 @@
 
             .botoes {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
             }
 
@@ -163,14 +169,14 @@
             }
 
             .carta {
-                width: 85%;
+                width: 75%;
                 margin-left: 7%;
                 height: 220px;
                 font-size: 14px;
             }
 
             .envelope {
-                height: 350px;
+                height: 250px;
             }
 
             .selo {
@@ -184,10 +190,10 @@
             }
 
             .botoes {
-                margin-top: 15px;
+                margin-left: 50px;
+                margin-top:20 px;
             }
         }
-
     </style>
 
 </head>
@@ -205,9 +211,9 @@
             <div class="corpo"></div>
         </div>
         <div class="carta" id="carta">
-            <p style="margin-bottom: 50px;">Sabia que te amo? ❤🥰 </p>
-            <div class="botoes">
-                <button id="nao">Não</button>
+            <p style="margin-bottom: 30px;margin-top: 40px ">Sabia que te amo? ❤🥰 </p>
+            <div class="botoes" style="margin-top: - 30px;">
+                <button id="nao">Hmm será?</button>
                 <button id="sim">Sim</button>
             </div>
         </div>
@@ -228,34 +234,34 @@
         let botoesContainer = document.querySelector(".botoes");
 
         naoBtn.addEventListener("click", function () {
-    let qtdBotoes = Math.floor(Math.random() * 3) + 1; // De 1 a 3 botões
-    for (let i = 0; i < qtdBotoes; i++) {
-        let novoSim = document.createElement("button");
-        novoSim.innerText = "Sim!";
-        novoSim.classList.add("sim-extra");
+            let qtdBotoes = Math.floor(Math.random() * 3) + 1; // De 1 a 3 botões
+            for (let i = 0; i < qtdBotoes; i++) {
+                let novoSim = document.createElement("button");
+                novoSim.innerText = "Sim!";
+                novoSim.classList.add("sim-extra");
 
-        // Define posições aleatórias
-        let topPosition = Math.floor(Math.random() * 55); // 200px de altura máxima
-        let leftPosition = Math.floor(Math.random() * 350); // 10px de largura máxima
+                // Define posições aleatórias
+                let topPosition = Math.floor(Math.random() * 55); // 200px de altura máxima
+                let leftPosition = Math.floor(Math.random() * 200); // 10px de largura máxima
 
-        novoSim.style.position = "absolute";
-        novoSim.style.top = `${topPosition}px`;
-        novoSim.style.left = `${leftPosition}px`;
+                novoSim.style.position = "absolute";
+                novoSim.style.top = `${topPosition}px`;
+                novoSim.style.left = `${leftPosition}px`;
 
-        // Diminuindo o tamanho do botão diretamente via JavaScript
-        novoSim.style.width = "80px";  // Largura do botão
-        novoSim.style.height = "30px"; // Altura do botão
-        novoSim.style.fontSize = "14px"; // Tamanho da fonte
-        novoSim.style.padding = "5px"; // Espaçamento interno
-        novoSim.style.borderRadius = "5px"; // Bordas arredondadas
+                // Diminuindo o tamanho do botão diretamente via JavaScript
+                novoSim.style.width = "80px";  // Largura do botão
+                novoSim.style.height = "30px"; // Altura do botão
+                novoSim.style.fontSize = "14px"; // Tamanho da fonte
+                novoSim.style.padding = "5px"; // Espaçamento interno
+                novoSim.style.borderRadius = "5px"; // Bordas arredondadas
 
-        novoSim.addEventListener("click", function () {
-            window.location.href = "sim.html";
+                novoSim.addEventListener("click", function () {
+                    window.location.href = "sim.html";
+                });
+
+                botoesContainer.appendChild(novoSim);
+            }
         });
-
-        botoesContainer.appendChild(novoSim);
-    }
-});
 
 
         document.getElementById("sim").addEventListener("click", function () {
